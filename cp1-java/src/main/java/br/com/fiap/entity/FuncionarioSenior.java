@@ -20,7 +20,11 @@ public class FuncionarioSenior extends Funcionario{
     }
 
     @Override
-    public String retornaInformacao {
-
+    public void retornaInformacao(){
+        System.out.println(
+                        "/nNome: " + getNomeCompleto() +
+                        "/nHoras Trabalhadas: " + getHorasTrabalhadas() +
+                        "/nValor Hora: " + getValorHora() +
+                        "/nSalário: " + calculaSalario());
     }
 }
