@@ -2,7 +2,7 @@ package br.com.fiap.entity;
 
 public class FuncionarioPleno extends Funcionario{
 
-    private double bonus;
+    private Double bonus;
 
     public FuncionarioPleno(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, Double bonus, String nivelProfissional) {
         super(nomeCompleto, horasTrabalhadas, valorHora, nivelProfissional);
