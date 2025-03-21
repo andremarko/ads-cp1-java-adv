@@ -4,26 +4,24 @@ public class FuncionarioPleno extends Funcionario{
 
     private double bonus;
 
-    public FuncionarioPleno(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, Double bonus) {
-        super(nomeCompleto, horasTrabalhadas, valorHora);
+    public FuncionarioPleno(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, Double bonus, String nivelProfissional) {
+        super(nomeCompleto, horasTrabalhadas, valorHora, nivelProfissional);
         this.bonus = bonus;
     }
 
     @Override
     public Double calculaSalario(){
-        quantidadeDeBonus = getHorasTrabalhadas() / 10;
+        // bonus a cada 10 horas trabalhadas
+        int quantidadeDeBonus = getHorasTrabalhadas() / 10;
         double bonusTotal = quantidadeDeBonus * bonus;
-        double salario = getHorasTrabalhadas() * getValorHora() + bonusTotal;
-        return salario;
+        return ((getHorasTrabalhadas() * 30) * getValorHora()) + bonusTotal;
     }
 
-    @Override
-    public void retornaInformacao(){
-        System.out.println(
-                        "\nNome: " + getNomeCompleto() +
-                        "\nHoras Trabalhadas: " + getHorasTrabalhadas() +
-                        "\nValor Hora: " + getValorHora() +
-                        "\nSalário: " + calculaSalario());
+    public double getBonus() {
+        return bonus;
     }
 
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
 }

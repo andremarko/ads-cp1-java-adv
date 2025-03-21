@@ -2,22 +2,23 @@ package br.com.fiap.entity;
 
 public class FuncionarioJunior extends Funcionario{
 
-    public FuncionarioJunior(String nomeCompleto, Integer horasTrabalhadas, Double valorHora) {
-        super(nomeCompleto, horasTrabalhadas, valorHora);
+    private Integer bonusMeta;
+
+    public FuncionarioJunior(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, String nivelProfissional, Integer bonusMeta) {
+        super(nomeCompleto, horasTrabalhadas, valorHora, nivelProfissional);
+        this.bonusMeta = bonusMeta;
     }
 
     @Override
     public Double calculaSalario(){
-        return getHorasTrabalhadas() * getValorHora();
+        return ((getHorasTrabalhadas() * 30) * getValorHora()) + bonusMeta;
     }
 
-    @Override
-    public void retornaInformacao(){
-        System.out.println(
-                        "\nNome: " + getNomeCompleto() +
-                        "\nHoras Trabalhadas: " + getHorasTrabalhadas() +
-                        "\nValor Hora: " + getValorHora() +
-                        "\nSalário: " + calculaSalario());
+    public Integer getBonusMeta() {
+        return bonusMeta;
     }
 
+    public void setBonusMeta(Integer bonusMeta) {
+        this.bonusMeta = bonusMeta;
+    }
 }
