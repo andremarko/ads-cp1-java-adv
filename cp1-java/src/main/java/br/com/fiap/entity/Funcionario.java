@@ -3,25 +3,41 @@ package br.com.fiap.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="TAB_FUNC")
+@Table(name="TAB_FUNCIONARIO")
 @SequenceGenerator(name="funcionario", sequenceName = "SQ_TB_FUNC", allocationSize = 1)
 public class Funcionario {
 
+    // atributo para persistência
     @Id
     @Column(name="id_funcionario")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "funcionario")
     private Integer idFuncionario;
 
-    @Column(name="nome_completo", )
+    // atributos herdáveis
+    @Column(name="nome_completo", nullable = false, length = 100 )
     protected String nomeCompleto;
+    @Column(name="horas_trabalhadas", nullable = false, length = 2)
     protected Integer horasTrabalhadas;
+    @Column(name="valor_hora", nullable = false, precision = 10, scale = 2)
     protected Double valorHora;
 
-    public Funcionario(String nomeCompleto, Integer horasTrabalhadas, Double valorHora) {
+    // atributo para persistência
+    @Column(name="nivelProfissional", nullable = false, scale = 20)
+    private String nivelProfissional;
+
+    public Funcionario(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, String nivelProfissional) {
+        super();
         this.nomeCompleto = nomeCompleto;
         this.horasTrabalhadas = horasTrabalhadas;
         this.valorHora = valorHora;
+        this.nivelProfissional = nivelProfissional;
     }
+
+    public Funcionario() {}
+
+    public Integer getIdFuncionario() { return idFuncionario; }
+
+    public void setIdFuncionario(Integer idFuncionario) { this.idFuncionario = idFuncionario; }
 
     public String getNomeCompleto() {
         return nomeCompleto;
@@ -47,16 +63,22 @@ public class Funcionario {
         this.valorHora = valorHora;
     }
 
+    public String getNivelProfissional() { return nivelProfissional; }
+
+    public void setNivelProfissional(String tipoFuncionario) { this.nivelProfissional = tipoFuncionario; }
+
     public Double calculaSalario(){
-        Double salario = horasTrabalhadas * valorHora;
-        return salario;
+        return ((horasTrabalhadas * valorHora)* 30);
     }
     public void retornaInformacao(){
        System.out.println(
                "\nNome: " + getNomeCompleto() +
                        "Horas Trabalhadas: " + getHorasTrabalhadas() +
                        "Valor Hora: " + getValorHora() +
-                       "Salário: " + calculaSalario());
+                       "Salário: " + calculaSalario() +
+                       "Tipo: " + getNivelProfissional()
+       );
+
     }
 
 }
