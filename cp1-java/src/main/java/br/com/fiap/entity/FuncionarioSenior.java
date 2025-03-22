@@ -4,7 +4,7 @@ public class FuncionarioSenior extends Funcionario{
 
     private Double bonus;
 
-    public FuncionarioSenior(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, Double bonus, String nivelProfissional) {
+    public FuncionarioSenior(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, Double bonus, NivelProfissional nivelProfissional) {
         super(nomeCompleto, horasTrabalhadas, valorHora, nivelProfissional);
         this.bonus = bonus;
     }

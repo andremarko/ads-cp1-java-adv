@@ -23,9 +23,9 @@ public class Funcionario {
 
     // atributo para persistência
     @Column(name="nivelProfissional", nullable = false, scale = 20)
-    private String nivelProfissional;
+    private NivelProfissional nivelProfissional;
 
-    public Funcionario(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, String nivelProfissional) {
+    public Funcionario(String nomeCompleto, Integer horasTrabalhadas, Double valorHora, NivelProfissional nivelProfissional) {
         super();
         this.nomeCompleto = nomeCompleto;
         this.horasTrabalhadas = horasTrabalhadas;
@@ -63,20 +63,20 @@ public class Funcionario {
         this.valorHora = valorHora;
     }
 
-    public String getNivelProfissional() { return nivelProfissional; }
+    public NivelProfissional getNivelProfissional() { return nivelProfissional; }
 
-    public void setNivelProfissional(String tipoFuncionario) { this.nivelProfissional = tipoFuncionario; }
+    public void setNivelProfissional(NivelProfissional nivelProfissional) { this.nivelProfissional = nivelProfissional; }
 
     public Double calculaSalario(){
-        return ((horasTrabalhadas * valorHora)* 30);
+        return ((getHorasTrabalhadas() * getValorHora())* 30);
     }
     public void retornaInformacao(){
        System.out.println(
                "\nNome: " + getNomeCompleto() +
-                       "Horas Trabalhadas: " + getHorasTrabalhadas() +
-                       "Valor Hora: " + getValorHora() +
-                       "Salário: " + calculaSalario() +
-                       "Tipo: " + getNivelProfissional()
+                       "\nHoras Trabalhadas: " + getHorasTrabalhadas() + "h" +
+                       "\nValor Hora: R$" + getValorHora() +
+                       "\nSalário: R$" + calculaSalario() +
+                       "\nTipo: " + getNivelProfissional()
        );
 
     }
